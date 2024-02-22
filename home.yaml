@@ -1,0 +1,23 @@
+name: home
+context_size: 2048
+f16: true
+gpu_layers: 90
+mmap: true
+trimsuffix: 
+- "\n"
+parameters:
+  model: huggingface://acon96/Home-3B-v2-GGUF/Home-3B-v2.q5_k_m.gguf
+  temperature: 0.2
+  top_k: 40
+  top_p: 0.95
+  seed: -1
+template:
+  chat: &template |-
+    Instruct: {{.Input}}
+    Output:
+  completion: *template
+      
+files:
+- filename: "Home-3B-v2.q5_k_m.gguf"
+  sha256: "b03c5cf009d37a39ff00102ea903ac514cb17e84c3e28bcd5471a964df102090"
+  uri: "https://huggingface.co/acon96/Home-3B-v2-GGUF/resolve/main/Home-3B-v2.q5_k_m.gguf"      
